@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MizoreTools"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Shell" Height="400" Width="610"
         ContentRendered="RunShell" Icon="Properties/bitbug_favicon.ico" ResizeMode="CanMinimize">
     <Grid Margin="0,0,0,0">

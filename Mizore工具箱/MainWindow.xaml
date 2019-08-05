@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MizoreTools"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
+        WindowStartupLocation="CenterScreen"
         Title="Mizore工具箱" Height="290" Width="560" Loaded="Window_Loaded" Icon="Properties/bitbug_favicon.ico" ResizeMode="CanMinimize">
     <Grid>
         <TabControl Name="TabControl">

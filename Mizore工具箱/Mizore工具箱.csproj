@@ -37,6 +37,9 @@
   <PropertyGroup>
     <ApplicationIcon>Properties\bitbug_favicon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -99,6 +102,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Changelog" />
     <None Include="MizoreTools.config">
       <SubType>Designer</SubType>
     </None>
