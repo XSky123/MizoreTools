@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mizore工具箱", "Mizore工具箱\Mizore工具箱.csproj", "{31F65C90-CCF7-4DBD-91AC-309ECCDF276F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31F65C90-CCF7-4DBD-91AC-309ECCDF276F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F65C90-CCF7-4DBD-91AC-309ECCDF276F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F65C90-CCF7-4DBD-91AC-309ECCDF276F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F65C90-CCF7-4DBD-91AC-309ECCDF276F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B501C07-DE15-49E0-83B0-E5AC04A8513F}
+	EndGlobalSection
+EndGlobal
