@@ -103,7 +103,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
-    <None Include="Changelog" />
     <None Include="MizoreTools.config">
       <SubType>Designer</SubType>
     </None>
