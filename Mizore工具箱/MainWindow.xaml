@@ -94,10 +94,10 @@
                                 </ComboBox>
                                 <Label Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,10,0,0" FontSize="16">代理地址</Label>
                                 <TextBox Grid.Column="3" Name="TxtProxyAddr" TextWrapping="Wrap" Width="200" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center"
-                                         VerticalContentAlignment="Center" Text="127.0.0.1" TextChanged="SaveConfig"/>
+                                         VerticalContentAlignment="Center" TextChanged="SaveConfig"/>
                                 <Label Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,10,0,0" FontSize="16">端口</Label>
                                 <TextBox Grid.Column="5" Name="TxtProxyPort" TextWrapping="Wrap" Width="50" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" 
-                                         VerticalContentAlignment="Center" Text="1080" TextChanged="SaveConfig"/>
+                                         VerticalContentAlignment="Center" TextChanged="SaveConfig"/>
 
                             </Grid>
                         </Grid>

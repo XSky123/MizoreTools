@@ -1,4 +1,8 @@
-Version: Alpha 4(仮)
+Version: Alpha 5(仮)
+Fix:
+* 修复无法自动读取配置中的代理端口号的问题
+
+Version: Alpha 4
 Fix:
 * 美化按钮样式
 * 现在窗口默认位置居中
