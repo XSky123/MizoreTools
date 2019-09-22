@@ -1,3 +1,7 @@
+Version: Beta 1
+Add:
+* 初步完成ffmpeg部分第一版
+
 Version: Alpha 4(仮)
 Fix:
 * 美化按钮样式
