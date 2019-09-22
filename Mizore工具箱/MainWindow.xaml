@@ -94,10 +94,10 @@
                                 </ComboBox>
                                 <Label Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,10,0,0" FontSize="16">代理地址</Label>
                                 <TextBox Grid.Column="3" Name="TxtProxyAddr" TextWrapping="Wrap" Width="200" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center"
-                                         VerticalContentAlignment="Center" TextChanged="SaveConfig"/>
+                                         VerticalContentAlignment="Center" TextChanged="SaveConfig" Text="127.0.0.1"/>
                                 <Label Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,10,0,0" FontSize="16">端口</Label>
                                 <TextBox Grid.Column="5" Name="TxtProxyPort" TextWrapping="Wrap" Width="50" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" 
-                                         VerticalContentAlignment="Center" TextChanged="SaveConfig"/>
+                                         VerticalContentAlignment="Center" TextChanged="SaveConfig" Text="1080"/>
 
                             </Grid>
                         </Grid>
@@ -188,8 +188,8 @@
                         <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,10,0,0" FontSize="16">选择文件</Label>
                         <TextBox Grid.Column="1" Name="TxtFFMpegIn" Width="310" Margin="10,10,0,0" FontSize="16" IsReadOnly="True"
                                  HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
-                        <Button  Grid.Column="2" Content="浏览..."  Height="28" Width="100" Margin="10,10,10,0" 
-                                 Name="BtnFFMpegBrowseIn" Click="BtnBrowse_Click"/>
+                        <Button Grid.Column="2" Content="浏览..."  Height="28" Width="100" Margin="10,10,10,0" 
+                                 Name="BtnFFMpegBrowseIn" Click="BtnFFMpegBrowseIn_Click"/>
 
                     </Grid>
                     <!-- Target -->
@@ -203,14 +203,13 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,10,0,0" FontSize="16">保存到</Label>
-                        <TextBox Grid.Column="1" Name="TxtFFMpegOut" Width="310" Margin="10,10,0,0" FontSize="16" IsReadOnly="True"
+                        <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,10,0,0" FontSize="16">保存名称</Label>
+                        <TextBox Grid.Column="1" Name="TxtFFMpegOut" Width="200" Margin="10,10,0,0" FontSize="16" 
                                  HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
-                        <Button  Grid.Column="2" Content="浏览..."  Height="28" Width="100" Margin="10,10,10,0" 
-                                 Name="BtnFFMpegBrowseOut" Click="BtnBrowse_Click"/>
+
 
                     </Grid>
-                    
+
                     <!-- ↓ Cutting -->
                     <Grid HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="65,20,0,0" >
                         <Grid HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top">
@@ -226,40 +225,8 @@
                             <Label Grid.Column="0" VerticalContentAlignment="Center" FontSize="16">
                                 剪辑起点
                             </Label>
-                            <Grid Grid.Column="1"><!-- Cutting Time Selector-->
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" ><!-- "Add" Buttons -->
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Width="25px" Margin="10,0,0,5">+</Button>
-                                    <Button Grid.Column="1" Width="25px" Margin="10,0,0,5">+</Button>
-                                    <Button Grid.Column="2" Width="25px" Margin="10,0,10,5">+</Button>
-                                </Grid>
-                                <TextBox Grid.Row="1" Height="30px" FontSize="24" HorizontalAlignment="Center"
-                                         Width="120px" TextAlignment="Center">00:00:00</TextBox>
-
-                                <Grid Grid.Row="2" ><!-- "Sub" Buttons -->
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Width="25px" Margin="10,5,0,0">-</Button>
-                                    <Button Grid.Column="1" Width="25px" Margin="10,5,0,0">-</Button>
-                                    <Button Grid.Column="2" Width="25px" Margin="10,5,10,0">-</Button>
-                                </Grid>
-                            </Grid>
-                            <Label Grid.Column="2" VerticalContentAlignment="Center" FontSize="16" Margin="20,0,0,0">
-                                剪辑终点
-                            </Label>
-                            <Grid Grid.Column="3"><!-- Cutting Time Selector-->
+                            <Grid Grid.Column="1">
+                                <!-- Cutting Time Selector-->
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -272,12 +239,12 @@
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Width="25px" Margin="10,0,0,5">+</Button>
-                                    <Button Grid.Column="1" Width="25px" Margin="10,0,0,5">+</Button>
-                                    <Button Grid.Column="2" Width="25px" Margin="10,0,10,5">+</Button>
+                                    <Button Grid.Column="0" Width="25px" Margin="10,0,0,5" Click="BtnStartAdd1H">+</Button>
+                                    <Button Grid.Column="1" Width="25px" Margin="10,0,0,5" Click="BtnStartAdd1M">+</Button>
+                                    <Button Grid.Column="2" Width="25px" Margin="10,0,10,5" Click="BtnStartAdd1S">+</Button>
                                 </Grid>
                                 <TextBox Grid.Row="1" Height="30px" FontSize="24" HorizontalAlignment="Center"
-                                         Width="120px" TextAlignment="Center">00:00:00</TextBox>
+                                         Width="120px" TextAlignment="Center" Name="TxtCutStartPos">00:00:00</TextBox>
 
                                 <Grid Grid.Row="2" >
                                     <!-- "Sub" Buttons -->
@@ -286,14 +253,50 @@
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Width="25px" Margin="10,5,0,0">-</Button>
-                                    <Button Grid.Column="1" Width="25px" Margin="10,5,0,0">-</Button>
-                                    <Button Grid.Column="2" Width="25px" Margin="10,5,10,0">-</Button>
+                                    <Button Grid.Column="0" Width="25px" Margin="10,5,0,0" Click="BtnStartSub1H">-</Button>
+                                    <Button Grid.Column="1" Width="25px" Margin="10,5,0,0" Click="BtnStartSub1M">-</Button>
+                                    <Button Grid.Column="2" Width="25px" Margin="10,5,10,0" Click="BtnStartSub1S">-</Button>
+                                </Grid>
+                            </Grid>
+                            <Label Grid.Column="2" VerticalContentAlignment="Center" FontSize="16" Margin="20,0,0,0">
+                                剪辑终点
+                            </Label>
+                            <Grid Grid.Column="3">
+                                <!-- Cutting Time Selector-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" >
+                                    <!-- "Add" Buttons -->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" Width="25px" Margin="10,0,0,5" Click="BtnEndAdd1H">+</Button>
+                                    <Button Grid.Column="1" Width="25px" Margin="10,0,0,5" Click="BtnEndAdd1M">+</Button>
+                                    <Button Grid.Column="2" Width="25px" Margin="10,0,10,5" Click="BtnEndAdd1S">+</Button>
+                                </Grid>
+                                <TextBox Grid.Row="1" Height="30px" FontSize="24" HorizontalAlignment="Center"
+                                         Width="120px" TextAlignment="Center" Name="TxtCutEndPos">00:00:00</TextBox>
+
+                                <Grid Grid.Row="2" >
+                                    <!-- "Sub" Buttons -->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" Width="25px" Margin="10,5,0,0" Click="BtnEndSub1H">-</Button>
+                                    <Button Grid.Column="1" Width="25px" Margin="10,5,0,0" Click="BtnEndSub1M">-</Button>
+                                    <Button Grid.Column="2" Width="25px" Margin="10,5,10,0" Click="BtnEndSub1S">-</Button>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-                    
+
                     <!-- ↓ Format & Splitting-->
                     <Grid HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Margin="10,10,0,0">
                         <!-- Proxy -->
@@ -308,30 +311,36 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <CheckBox Grid.Column="0" Grid.Row="0" Content="无损转换MP4"  VerticalAlignment="Center" HorizontalAlignment="Left" 
+                        <!--<CheckBox Grid.Column="3" Grid.Row="0" Content="转换MP4"  VerticalAlignment="Center" HorizontalAlignment="Left" 
                                   VerticalContentAlignment="Center"  Margin="10,10,0,0" FontSize="16" IsChecked="False"
-                                  Name="ChkChangeMP4" Checked="ChkFormat_Checked" Unchecked="ChkFormat_UnChecked"/>
+                                  Name="ChkChangeMP4" Checked="ChkFormat_Checked" Unchecked="ChkFormat_UnChecked"/>-->
 
-                        <Button Grid.Column="2" Grid.Row="0"  Content="抽默认音轨"  HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="16"
-                                Name="BtnSplitAudio" Click="BtnCheckAllFormat_Click"/>
-                        <Button Grid.Column="3" Grid.Row="0"  Content="抽默认视频轨"  HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="16"
-                                Name="BtnSplitVideo" Click="BtnCheckAllFormat_Click"/>
-                        <Button Grid.Column="4" Grid.Row="0"  Content="剪切/转换"  HorizontalAlignment="Left" Margin="50,10,0,0" FontSize="16"
-                                Name="BtnFFMpegGo" Click="BtnCheckAllFormat_Click" Width="120px"/>
+                        <Button Grid.Column="1" Grid.Row="0"  Content="获取WAV"  HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="16"
+                                Name="BtnGetWAV" Click="BtnGetWAV_Click"/>
+                        <Button Grid.Column="2" Grid.Row="0"  Content="转码MP4(320K音轨)"  HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="16"
+                                Name="BtnGet320KMP4" Click="BtnGet320KMP4_Click"/>
+                        <Button Grid.Column="3" Grid.Row="0"  Content="转/切为MP4(无损)"  HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="16"
+                                Name="BtnGetCopyMP4" Click="BtnGetCopyMP4_Click"/>
+                        <Button Grid.Column="4" Grid.Row="0"  Content="切割(原格式)"  HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="16"
+                                Name="BtnGetCut" Click="BtnGetCut_Click" Width="120px"/>
 
                     </Grid>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="About" Name="TabAbout">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="114*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="label" Grid.Row="0" Content="Mizore工具箱 Alpha 3" Height="100" HorizontalAlignment="Center"
-                           VerticalContentAlignment="Center" FontSize="22"/>
-                    <Label x:Name="LblAbout" Grid.Row="1" Height="100"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="40,0"/>
+                    <Label x:Name="label" Grid.Row="0" Content="Mizore工具箱 Beta 1" Height="100" HorizontalAlignment="Center"
+                           VerticalContentAlignment="Center" FontSize="22" Grid.Column="1" Margin="63.538,0,156,1"/>
+                    <Label x:Name="LblAbout" Grid.Row="1" Height="100"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="176.538,1,269,0" Grid.Column="1"/>
                 </Grid>
             </TabItem>
         </TabControl>
