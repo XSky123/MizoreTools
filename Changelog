@@ -1,3 +1,9 @@
+Version: Beta 2
+Add:
+* 读取剪切板自动获取网址(目前单击对话框或切换选项卡会自动粘贴)
+* 文本框支持拖拽文件
+* 默认保存路径改为Media
+
 Version: Beta 1
 Add:
 * 初步完成ffmpeg部分第一版

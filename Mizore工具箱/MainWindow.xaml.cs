@@ -21,12 +21,12 @@ namespace MizoreTools
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
+    
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            
         }
         public string AboutString { get; set; }
 
@@ -46,18 +46,22 @@ namespace MizoreTools
                 "软件在测试阶段，出现问题随时联系 Contact@XSky123.com\n\n" +
                 "By Mizore@Voice Memories";
 
+            readNewYoutubeAddr();
 
 
         }
 
-
+  
         private void CheckAndRun(string program, string arguments, bool show_folder=true)
         {
             if (Shell.ExistsOnPath(program))
             {
                 if (show_folder)
                 {
-                    ShellWindow newWindow = new ShellWindow(program, arguments, TxtOutAddr.Text);
+                    string folder;
+                    folder = TxtOutAddr.Text == "" ? "Media" : TxtOutAddr.Text;
+
+                    ShellWindow newWindow = new ShellWindow(program, arguments, folder);
                     newWindow.Show();
                 }
                 else
@@ -156,9 +160,25 @@ namespace MizoreTools
             textbox.LostFocus += _OnLostFocus;
             textbox.GotFocus += _OnGotFocus;
         }
+
+        // test clipboard when change tabpage
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            readNewYoutubeAddr();
+        }
+
+      
+
+        //
         /*
          * Youtube-DL 控件部分
          */
+
+        // click text box and check clipboard, may change logic later.
+        private void TxtInAddr_GotFocus(object sender, RoutedEventArgs e)
+        {
+            readNewYoutubeAddr();
+        }
         private void BtnBrowse_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog m_Dialog = new FolderBrowserDialog();
@@ -174,6 +194,7 @@ namespace MizoreTools
             TxtOutAddr.ScrollToHorizontalOffset(rect.Right);
             SaveConfig();
         }
+        
 
         private void ChkProxy_Checked(object sender, RoutedEventArgs e)
         {
@@ -258,6 +279,23 @@ namespace MizoreTools
                     System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName),
                     System.IO.Path.GetExtension(openFileDialog.FileName));
             }
+        }
+
+        private void TxtFFMpegIn_PreviewDragOver(object sender, System.Windows.DragEventArgs e)
+        {
+            e.Effects = System.Windows.DragDropEffects.Copy;
+            e.Handled = true;
+        }
+
+        private void TxtFFMpegIn_PreviewDrop(object sender, System.Windows.DragEventArgs e)
+        {
+            foreach (string f in (string[])e.Data.GetData(System.Windows.DataFormats.FileDrop))
+            {
+                TxtFFMpegIn.Text = f;
+            }
+            TxtFFMpegOut.Text = String.Format("{0}_Mizore{1}",
+            System.IO.Path.GetFileNameWithoutExtension(TxtFFMpegIn.Text),
+            System.IO.Path.GetExtension(TxtFFMpegIn.Text));
         }
 
         private void BtnGetWAV_Click(object sender, RoutedEventArgs e)
@@ -489,6 +527,23 @@ namespace MizoreTools
          * Youtube-DL 参数控制
          * 
          */
+
+        // read clipboard
+        private void readNewYoutubeAddr()
+        {
+            string str = System.Windows.Clipboard.GetText();
+            if (str.Contains("youtube") || str.Contains("bilibili"))
+            {
+                if (!this.IsLoaded) return;
+
+                if (str != TxtInAddr.Text)
+                {
+                    TxtInAddr.Text = str;
+                }
+            }
+
+        }
+
         private string build_arguments()
         {
             
@@ -501,9 +556,9 @@ namespace MizoreTools
         {
             if (TxtOutAddr.Text != "")
             {
-                return String.Format(" -o \"{0}{1}%(title)s.%(ext)s\"", TxtOutAddr.Text, System.IO.Path.DirectorySeparatorChar);
+                return String.Format(" -o \"{0}{1}%(title)s-%(id)s.%(ext)s\"", TxtOutAddr.Text, System.IO.Path.DirectorySeparatorChar);
             }
-            return "";
+            return String.Format(" -o \"{0}{1}Media{1}%(title)s-%(id)s.%(ext)s\"", System.IO.Directory.GetCurrentDirectory(), System.IO.Path.DirectorySeparatorChar);
         }
         private string proxy_builder()
         {
@@ -665,5 +720,6 @@ namespace MizoreTools
             int sec_diff = time_diff - hour_diff * 3600 - min_diff * 60;
             return String.Format("{0:D2}:{1:D2}:{2:D2}", hour_diff, min_diff, sec_diff);
         }
+
     }
 }
